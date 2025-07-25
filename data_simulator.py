@@ -4,9 +4,6 @@ import random
 import time
 import datetime
 
-#These are the libraries we will use to simulate the data stream by using random time and also a timestamp for the messages.
-
-#The full scripted conversation will be stored in a list of dictionaries, where each dictionary represents a message with a timestamp and content.
 
 #Personalities:
 #Priya: Project Lead / Proactive Communicator
@@ -75,7 +72,7 @@ def generate_message_stream():
 
         #This will define the event which shows a timestamp, user, and text of the message
         event = {
-            "timestamp": simulation_clock.isoformat(),
+            "timestamp": simulation_clock.strftime("%b %d, %I:%M %p"),
             "user": message_data["user"],
             "text": message_data["text"]
         }
