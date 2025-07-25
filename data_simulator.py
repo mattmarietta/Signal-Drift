@@ -8,7 +8,7 @@ import datetime
 
 #The full scripted conversation will be stored in a list of dictionaries, where each dictionary represents a message with a timestamp and content.
 
-#Different personalities:
+#Personalities:
 #Priya: Project Lead / Proactive Communicator
 #Ben: Developer / Avoidant & Overwhelmed
 #Sara: Detail-Oriented QA / Passive-Aggressive
@@ -27,20 +27,21 @@ scripted_conversation = [
 
     #Phase 2: A little friction starts to appear
 
-    {"user": "Priya", "text": "Afternoon, team. @Ben, any update on that API schema?"},
+    {"user": "Priya", "text": "Just circling back on that API schema, @Ben. Any update?"},
     {"user": "Ben", "text": "Making progress on it. Ran into a small snag with the database connection but I think it's sorted."},
     {"user": "Sara", "text": "A 'snag'? Is the data source not what we agreed on in the spec?"},
     {"user": "Ben", "text": "It's the same source, just a configuration issue. It's fine."},
     {"user": "Priya", "text": "Okay, keep us posted. We need to lock that down soon for Sara to get started."},
-    {"user": "Sara", "text": "It would be helpful to have documentation for these 'snags' in the future."},
+    {"user": "Sara", "text": "Noted. It would be helpful to have documentation for these 'snags' in the future."},
     {"user": "Ben", "text": "Yeah, I'll get to it when I can."},
     {"user": "Priya", "text": "Let's focus on the schema for now. Can we get a firm ETA, @Ben?"},
+    {"user": "Sara", "text": "Yes, an ETA would be great. My test plan depends on it."},
 
     #Phase 3: Conversation becomes more tense
 
     {"user": "Ben", "text": "I'm a bit swamped right now, but I'm aiming for EOD tomorrow."},
     {"user": "Priya", "text": "Tomorrow EOD is too late. That leaves Sara with no time before the Friday demo."},
-    {"user": "Sara", "text": "Actually, I thought the schema was supposed to be ready yesterday. That's what the project plan says."},
+    {"user": "Sara", "text": "Actually, I thought the schema was supposed to be ready yesterday. Per my last message, my work is blocked."},
     {"user": "Ben", "text": "The project plan didn't account for the authentication library being deprecated."},
     {"user": "Priya", "text": "This is the first I'm hearing about a deprecated library. Why wasn't this flagged earlier?"},
     {"user": "Ben", "text": "I thought I mentioned it. I've been trying to work around it."},

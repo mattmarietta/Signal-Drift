@@ -4,7 +4,12 @@
 
 #Hard coding common phrases that could include emotional drift
 #Downside of this approach is that it can be taken out of context, but it is a good starting point for the scoring engine
+#A lot of these signals are specific to the prompt, so they may not be applicable to other conversations. Real-time AI would be much better suited for this task. 
 DRIFT_SIGNALS = {
+    "a 'snag'?": (0.6, "Sarcastic questioning; challenges a colleague's statement."),
+    "just circling back": (0.6, "Passive-aggressive follow-up; implies lateness."),
+    "per my last message": (0.7, "Passive-aggressive; implies 'you didn't read my message'."),
+    "noted.": (0.5, "Dismissive acknowledgement."),
     "making progress": (0.3, "Ambiguous update, not very informative."),
     "maybe": (0.4, "Hesitant language, indicates uncertainty."),
     "i thought": (0.7, "Potential contradiction or blame-shifting."),
