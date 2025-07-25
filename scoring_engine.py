@@ -77,20 +77,3 @@ def context_score_message(current_text, last_score, synthetic_hrv=None):
 
     #Return final score and reason
     return round(current_score, 2), reason
-
-
-'''
-"Test cases for the scoring engine, uncomment for testing purposes"
-if __name__ == '__main__':
-    print("\nTesting for Ben")
-    score, reason = context_score_message("I'm a bit swamped right now",  0.0)
-    print(f"Message: 'I'm a bit swamped right now' -> Score: {score}, Reason: {reason}")
-
-    print("\nTesting for Sara")
-    score, reason = context_score_message("Must be nice to just work around the spec.", 0.0)
-    print(f"Message: 'Must be nice...' -> Score: {score}, Reason: {reason}")
-    
-    print("Testing for a Sudden Shift")
-    score, reason = context_score_message("You know what, this isn't working.", 0.0)
-    print(f"Message: 'You know what...' -> Score: {score}, Reason: {reason}")
-'''
