@@ -1,4 +1,4 @@
-#This file will be used to simulate the data stream for the fake "slack channel" to show emotional drift and how the conversation changes over time.
+#Part 1 Stream Simulation
 
 import random
 import time
@@ -8,9 +8,14 @@ import datetime
 
 #The full scripted conversation will be stored in a list of dictionaries, where each dictionary represents a message with a timestamp and content.
 
+#Different personalities:
+#Priya: Project Lead / Proactive Communicator
+#Ben: Developer / Avoidant & Overwhelmed
+#Sara: Detail-Oriented QA / Passive-Aggressive
+
 scripted_conversation = [
-    # Phase 1: Team is aligned and working well
-    # User: name of user x, text: what they are sending on their channel
+    #Phase 1: Team is aligned and working well
+    #User: name of user x, text: what they are sending on their channel
 
     {"user": "Priya", "text": "Morning team! Quick check-in on the Automated Reporting Dashboard. How are we looking for the demo on Friday?"},
     {"user": "Ben", "text": "Morning! The data pipeline is mostly in place. Things are moving along."},
@@ -20,7 +25,7 @@ scripted_conversation = [
     {"user": "Sara", "text": "Okay. I'll need that schema for my test stubs. Let me know when it's ready."},
     {"user": "Priya", "text": "Excellent. Sounds like we're in a good spot. Let's keep up the momentum!"},
 
-    # Phase 2: A little friction starts to appear
+    #Phase 2: A little friction starts to appear
 
     {"user": "Priya", "text": "Afternoon, team. @Ben, any update on that API schema?"},
     {"user": "Ben", "text": "Making progress on it. Ran into a small snag with the database connection but I think it's sorted."},
@@ -31,7 +36,7 @@ scripted_conversation = [
     {"user": "Ben", "text": "Yeah, I'll get to it when I can."},
     {"user": "Priya", "text": "Let's focus on the schema for now. Can we get a firm ETA, @Ben?"},
 
-    # Phase 3: Conversation becomes more tense
+    #Phase 3: Conversation becomes more tense
 
     {"user": "Ben", "text": "I'm a bit swamped right now, but I'm aiming for EOD tomorrow."},
     {"user": "Priya", "text": "Tomorrow EOD is too late. That leaves Sara with no time before the Friday demo."},
@@ -43,7 +48,7 @@ scripted_conversation = [
     {"user": "Priya", "text": "Okay, this isn't productive. Ben, we need that schema. What has to happen to get it done in the next 3 hours?"},
     {"user": "Ben", "text": "I guess I can drop everything else and just focus on that."},
 
-    # Phase 4: Conversation escalates further and drift is very evident
+    #Phase 4: Conversation escalates further and drift is very evident
 
     {"user": "Sara", "text": "Fine. I'll just be waiting here, unable to do my job."},
     {"user": "Priya", "text": "Sara, let's keep it constructive. Ben, please confirm you're working on it now."},
@@ -61,18 +66,21 @@ def generate_message_stream():
 
     for message_data in scripted_conversation:
 
-        #Comment later
-        message_delay = random.uniform(10, 30)
+        #Set a message delay to show real conversation between 10 and 60 seconds
+        #Advance clock by the message delay
+        message_delay = random.uniform(10, 60)
         simulation_clock += datetime.timedelta(seconds=message_delay)
 
+
+        #This will define the event which shows a timestamp, user, and text of the message
         event = {
             "timestamp": simulation_clock.isoformat(),
             "user": message_data["user"],
             "text": message_data["text"]
         }
 
-        # 
+        #Yield the event to the main loop for a real conversation feel
         yield event
 
         #Use time.sleep() to simulate a delay in the stream
-        time.sleep(random.randint(5,10))
+        time.sleep(random.uniform(0.5, 1.5))
