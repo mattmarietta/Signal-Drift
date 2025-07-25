@@ -24,7 +24,7 @@ def run_drift_simulation():
         user_state = user_states[user]
 
         #Score the current message using the scoring engine
-        #!! Keep in mind that the drift score is not compared to the threshold. Only average score is.
+        #!! Keep in mind that the drift score is not compared to the threshold. Only average score is compared.
         drift_score, reason = context_score_message( current_text=text, last_score=user_state["last_score"])
 
         #Update the users sliding window of scores by appending and removing first score
