@@ -17,7 +17,8 @@ My system figures out if a message is "negative" in a few steps, starting simple
 
 #### The Foundation: A "Red Flag" Dictionary
 
-First, the system has a built-in list of words and phrases that are red flags in a workplace chat. Things like "whatever," "must be nice," or "I guess." Each phrase has a pre-defined score based on how problematic it is, which was easy to map with the script. This provides the initial, foundational analysis for every message.
+First, the system has a built-in list of words and phrases that are red flags in a workplace chat. Things like "whatever," "must be nice," or "I guess." Each phrase has a pre-defined score based on how problematic it is, which was easy to map with the script. This provides the initial, foundational analysis for every message. In addition to this, the setup allowed me to test easily and reproduce the same results over and over for observability.
+
 
 | Signal Phrase           | Score | Reason / Detected Pattern                           |
 | ----------------------- | ----- | --------------------------------------------------- |
@@ -37,7 +38,7 @@ First, the system has a built-in list of words and phrases that are red flags in
 
 #### B. Looking for Patterns
 
-A single negative message isn't always a disaster; the real problems are in the patterns. Some of these calculations might be simple, but they represented the structure well. On top of the basic score, the system adds penalties for three specific situations:
+A single negative message isn't always a disaster; the real problems are in the patterns. While the calculations are simple, they effectively model the patterns of a real conversation. On top of the basic score, the system adds penalties for three specific situations:
 
 Consistent Negativity: If someone sends a negative message (score > 0.5), and their last message was also negative, they get a +0.1 penalty. This catches users who are being difficult over and over again. This was done with a simple if statement check.
 
@@ -51,7 +52,7 @@ Suddenly Snapping: If someone seems perfectly fine one moment (last score < 0.2)
 
 To create a realistic simulation, I designed three distinct user personas and crafted a pre-written, 31-message script that tells a coherent story of a team's communication degrading.
 
-* **Priya (The Proactive Project Lead):** Her communication is direct, clear, and focused on resolving issues. She acts as the anchor trying to maintain balance and coherence.
+* **Priya (The Proactive Project Lead):** Her communication is direct, clear, and focused on resolving issues. She acts as the anchor, trying to maintain balance and coherence.
 * **Ben (The Avoidant Developer):** When under pressure, he gives vague updates ("making progress"), deflects commitment ("I'm swamped"), and becomes defensive.
 * **Sara (The Passive-Aggressive QA):** She is precise and detail-oriented, but when blocked, her frustration manifests as sarcasm (`"A 'snag'?"`), dismissiveness (`"noted."`), and passive-aggression (`"Must be nice"`).
 
